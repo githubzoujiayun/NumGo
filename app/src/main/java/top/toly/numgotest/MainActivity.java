@@ -2,19 +2,21 @@ package top.toly.numgotest;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.widget.TextView;
 
 import top.toly.num_go.NumGo;
+import top.toly.num_go.interpolator.D_X2_Inter;
 
 public class MainActivity extends AppCompatActivity {
-    private static final String TAG = "MainActivity";
+    private static final String TAG = "MainActivity1";
     private TextView mId_tv_hello;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        mId_tv_hello = findViewById(R.id.id_tv_hello);
+        mId_tv_hello = findViewById(R.id.sinD);
 
         NumGo numGo = new NumGo(true, 0, 5000);
 
@@ -27,18 +29,22 @@ public class MainActivity extends AppCompatActivity {
 //        numGo.setTime(10000);                   ///
 //        //设置重复次数 -1无限重复                 ///
 
+
+        numGo.setInterpolator(new D_X2_Inter());
+
         //更新时监听
         numGo.setOnUpdate(new NumGo.OnUpdate() {
             @Override
             public void onUpdate(float rate) {
-                mId_tv_hello.setRotation(360 * rate);
+                Log.d(TAG, "onUpdate: " + rate);
+                mId_tv_hello.setTranslationY(-600 * rate);
             }
         });
         //停止时监听
         numGo.setOnStop(new NumGo.OnStop() {
             @Override
             public void onStop() {
-//                mId_tv_hello.setText("I was Stopped");
+                mId_tv_hello.setText("I was Stopped");
             }
         });
         //重复时监听

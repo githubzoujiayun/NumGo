@@ -2,6 +2,7 @@ package top.toly.num_go;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
+import android.animation.TimeInterpolator;
 import android.animation.ValueAnimator;
 import android.view.animation.LinearInterpolator;
 
@@ -17,7 +18,7 @@ public abstract class BaseNumGo {
     public ValueAnimator valueAnimator;
     protected boolean isReverse = true;//是否翻转
     protected int repeatCount = 2;//重复次数
-    protected LinearInterpolator value = new LinearInterpolator();//插值器
+    protected TimeInterpolator mInterpolator = new LinearInterpolator();//插值器
 
     protected int time = 2;//
     protected int mCount = 0;
@@ -75,7 +76,7 @@ public abstract class BaseNumGo {
         valueAnimator = ValueAnimator.ofFloat(startF, endF);//设置数字区域
         valueAnimator.setDuration(time);//设置时长
 
-        valueAnimator.setInterpolator(value);//设置插值器
+        valueAnimator.setInterpolator(mInterpolator);//设置插值器
 
         valueAnimator.setRepeatCount(repeatCount);//设置重复次数
 
@@ -133,14 +134,6 @@ public abstract class BaseNumGo {
     protected abstract int onStop();
 
 
-    public ValueAnimator getValueAnimator() {
-        return valueAnimator;
-    }
-
-    public void setValueAnimator(ValueAnimator valueAnimator) {
-        this.valueAnimator = valueAnimator;
-    }
-
     public int getRepeatCount() {
         return repeatCount;
     }
@@ -155,5 +148,13 @@ public abstract class BaseNumGo {
 
     public void setTime(int time) {
         this.time = time;
+    }
+
+    public TimeInterpolator getInterpolator() {
+        return mInterpolator;
+    }
+
+    public void setInterpolator(TimeInterpolator interpolator) {
+        mInterpolator = interpolator;
     }
 }

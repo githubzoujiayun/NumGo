@@ -8,13 +8,56 @@
     tools:context=".MainActivity">
 
     <TextView
-        android:id="@+id/id_tv_hello"
+        android:id="@+id/sinD"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
+        android:layout_marginBottom="140dp"
+        android:text="sin减速"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintEnd_toStartOf="@+id/sinA"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <TextView
+        android:id="@+id/sinA"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="sin加速"
+        app:layout_constraintEnd_toStartOf="@+id/xD"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/sinD"
+        app:layout_constraintTop_toTopOf="@+id/sinD"/>
+
+    <TextView
+        android:id="@+id/xD"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="x平方减速"
+        app:layout_constraintEnd_toStartOf="@+id/xA"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/sinA"
+        app:layout_constraintTop_toTopOf="@+id/sinA"/>
+
+    <TextView
+        android:id="@+id/xA"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="x平方加速"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/xD"
+        app:layout_constraintTop_toTopOf="@+id/xD"/>
+
+    <Button
+        android:id="@+id/start"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginTop="8dp"
+        android:text="开始赛跑"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/xD"/>
 
 </android.support.constraint.ConstraintLayout>
