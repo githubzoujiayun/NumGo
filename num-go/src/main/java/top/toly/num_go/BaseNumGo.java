@@ -23,6 +23,7 @@ public abstract class BaseNumGo {
     protected int time = 2;//
     protected int mCount = 0;
     protected float mRate = 0;
+    protected long mDelay = 0;
 
     public BaseNumGo(boolean isReverse, int repeatCount, int time) {
         this.isReverse = isReverse;
@@ -41,11 +42,18 @@ public abstract class BaseNumGo {
     /**
      * 开启动画
      */
-    public void go() {
+    public void go(long startDelay) {
+        setDelay(startDelay);
         end();
         startViewAnim(0f, 1f, time);
     }
 
+    /**
+     * 开启动画
+     */
+    public void go() {
+        go(0L);
+    }
     /**
      * 结束动画
      */
@@ -77,7 +85,7 @@ public abstract class BaseNumGo {
         valueAnimator.setDuration(time);//设置时长
 
         valueAnimator.setInterpolator(mInterpolator);//设置插值器
-
+        valueAnimator.setStartDelay(mDelay);
         valueAnimator.setRepeatCount(repeatCount);//设置重复次数
 
         if (isReverse) {//设置重复模式
@@ -156,5 +164,9 @@ public abstract class BaseNumGo {
 
     public void setInterpolator(TimeInterpolator interpolator) {
         mInterpolator = interpolator;
+    }
+
+    public void setDelay(long delay) {
+        mDelay = delay;
     }
 }

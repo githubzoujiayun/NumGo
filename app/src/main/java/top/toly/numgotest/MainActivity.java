@@ -56,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        numGo.go();//运行
+        numGo.go(2000);//运行
 //        numGo.end();//停止
     }
 }

@@ -80,6 +80,6 @@ public class InterpolatorTestActivity extends AppCompatActivity {
         mNumGo1.go();
         mNumGo2.go();
         mNumGo3.go();
-        mNumGo4.go();
+        mNumGo4.go(2000);
     }
 }
